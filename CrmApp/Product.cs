@@ -6,10 +6,38 @@ namespace CrmApp
 {
   class Product
   {
-    public string Code { get; set; }
+
+    private int category;
+
+    private string code;
+
+    /// <summary>
+    /// Properties
+    /// </summary>
+    public string Code
+    {
+      get { return "GR" + code; }
+      set { code = value; }
+    }
     public string Name { get; set; }
     public decimal Price { get; set; }
     public int Quantity { get; set; }
+
+    public decimal TotalCost { get { return Price * Quantity; } }
+
+
+    public Product(int category)
+    {
+      this.category = category;
+    }
+
+    //Default Constractor
+    public Product()
+    {
+
+    }
+
+
 
 
 
@@ -19,21 +47,24 @@ namespace CrmApp
       Console.WriteLine(Name);
       Console.WriteLine(Price);
       Console.WriteLine(Quantity);
-      Console.WriteLine(GetTotalCost());
+      Console.WriteLine(TotalCost);
       Console.WriteLine();
     }
 
-    public void IncreasePrice (decimal percentage)
+    public void IncreasePrice(decimal percentage)
     {
-      Price *= (1+ percentage);
+      if (category == 1)
+        Price = 1 + 0.1m;
+      else
+        Price *= (1 + percentage);
     }
 
-    public decimal GetTotalCost()
+    /*public decimal GetTotalCost()
     {
       decimal totalCost;
       totalCost = Price * Quantity;
       return totalCost;
-    }
+    }*/
 
     public void setCode(string code)
     {

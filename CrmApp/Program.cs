@@ -10,46 +10,28 @@ namespace CrmApp
 
       public static void Main()
       {
-        //string returnedProduct;
-        //string message = "Give me the product name:";
+        Ui ui = new Ui();
 
-        Product Chocolate = new Product
-        {
-          Code = "A1",
-          Name = "Toblerone",
-          Price = 1.5m,
-          Quantity = 10
-        };
+        Product ChocolateProduct = ui.CreateProduct();
+        ChocolateProduct.Print();
 
-         Chocolate.Print();
-
-        Product Juice = new Product
-        {
-          Code = "A2",
-          Name = "Amita",
-          Price = 1.2m,
-          Quantity = 15
-        };
-
-        Juice.Print();
+        Product JuiceProduct = ui.CreateProduct();
+        JuiceProduct.Print();
 
 
-        decimal total;
-        total = Chocolate.GetTotalCost() + Juice.GetTotalCost();
-        Console.WriteLine("Total price of products: " + total);
+
+
+
+        Console.WriteLine("Total price of products: " + ChocolateProduct.TotalCost+JuiceProduct.TotalCost);
 
         Console.ReadLine();
       }
 
 
 
-
-
-
-
       //Declaration of a method(s)
 
-      static string DoWork(string message)
+     /* static string DoWork(string message)
       {
 
         string Product;
@@ -60,7 +42,7 @@ namespace CrmApp
         //Console.WriteLine(Product);
 
         return Product;
-      }
+      }*/
 
 
 
