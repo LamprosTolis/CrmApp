@@ -23,7 +23,7 @@ namespace CrmApp
         product.Price = decimal.Parse(Console.ReadLine());
 
         Console.WriteLine("Enter the product's quantity: ");
-        product.Price = int.Parse(Console.ReadLine());
+        product.Quantity = int.Parse(Console.ReadLine());
 
         return product;
       }

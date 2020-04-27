@@ -26,30 +26,43 @@ namespace CrmApp
     public decimal TotalCost { get { return Price * Quantity; } }
 
 
-    public Product(int category)
+    public Product(int _category)
     {
-      this.category = category;
+      category = _category;
     }
 
     //Default Constractor
     public Product()
     {
-
+      
     }
 
+    public string PrintToLine()
+    {
+      //return "Name= " + Name +"\n"
+      //   + " Price= "+Price
+      //   + " Quantity= " + Quantity
+      //   + " TotalCost= " + TotalCost;
+      // preferrable way using $
+      return $"Name= {Name} Code= {Code} Price= {Price} Quantity= {Quantity} TotalCost= {TotalCost}";
 
-
-
+    }
 
     public void Print()
     {
-      Console.WriteLine(Code);
-      Console.WriteLine(Name);
-      Console.WriteLine(Price);
-      Console.WriteLine(Quantity);
-      Console.WriteLine(TotalCost);
+      Console.WriteLine(PrintToLine());
       Console.WriteLine();
     }
+
+
+
+    //public void Print()
+    //{
+    //  Console.WriteLine(Name);
+    //  Console.WriteLine(Price);
+    //  Console.WriteLine(Quantity);
+    //  Console.WriteLine(TotalCost);
+    //}
 
     public void IncreasePrice(decimal percentage)
     {
@@ -58,23 +71,5 @@ namespace CrmApp
       else
         Price *= (1 + percentage);
     }
-
-    /*public decimal GetTotalCost()
-    {
-      decimal totalCost;
-      totalCost = Price * Quantity;
-      return totalCost;
-    }*/
-
-    public void setCode(string code)
-    {
-      Code = code;
-    }
-
-    public string GetCode()
-    {
-      return Code;
-    }
-
   }
 }

@@ -13,38 +13,16 @@ namespace CrmApp
         Ui ui = new Ui();
 
         Product ChocolateProduct = ui.CreateProduct();
-        ChocolateProduct.Print();
 
-        Product JuiceProduct = ui.CreateProduct();
-        JuiceProduct.Print();
+        if (ChocolateProduct != null)
+        {
+          ChocolateProduct.Print();
+        }
 
-
-
-
-
-        Console.WriteLine("Total price of products: " + ChocolateProduct.TotalCost+JuiceProduct.TotalCost);
-
+        decimal total = ChocolateProduct.TotalCost;
+        Console.WriteLine(total);
         Console.ReadLine();
       }
-
-
-
-      //Declaration of a method(s)
-
-     /* static string DoWork(string message)
-      {
-
-        string Product;
-
-        Console.WriteLine("Hello Code.Hub buds!\n");
-        Product = Console.ReadLine();
-
-        //Console.WriteLine(Product);
-
-        return Product;
-      }*/
-
-
 
     }
   }
