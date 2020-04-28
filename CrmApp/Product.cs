@@ -7,7 +7,7 @@ namespace CrmApp
   class Product
   {
 
-    private int category;
+    private  readonly int category;
 
     private string code;
 
@@ -56,13 +56,15 @@ namespace CrmApp
 
 
 
-    //public void Print()
-    //{
-    //  Console.WriteLine(Name);
-    //  Console.WriteLine(Price);
-    //  Console.WriteLine(Quantity);
-    //  Console.WriteLine(TotalCost);
-    //}
+    public string GetRange()
+    {
+      if (Price < 1)
+        return "low";
+      else if (Price < 10)
+        return "medium";
+      else
+        return "hi";
+    }
 
     public void IncreasePrice(decimal percentage)
     {
