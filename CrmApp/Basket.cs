@@ -43,5 +43,26 @@ namespace CrmApp
 
       }
     }
+
+    public void ShowCategories()
+    {
+      int howManyLow = 0;
+      int howManyMedium = 0;
+      int howManyHi = 0;
+      foreach (Product p in Products)
+      {
+        if (p.GetRange() == "low") howManyLow++;
+        if (p.GetRange() == "medium") howManyMedium++;
+        if (p.GetRange() == "hi") howManyHi++;
+
+      }
+      Console.WriteLine($"howManyLow= {howManyLow}");
+      Console.WriteLine($"howManyMedium= {howManyMedium}");
+      Console.WriteLine($"howManyHi= {howManyHi}");
+    }
+
+
+
+
   }
 }

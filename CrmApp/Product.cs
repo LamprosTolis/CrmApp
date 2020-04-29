@@ -39,13 +39,7 @@ namespace CrmApp
 
     public string PrintToLine()
     {
-      //return "Name= " + Name +"\n"
-      //   + " Price= "+Price
-      //   + " Quantity= " + Quantity
-      //   + " TotalCost= " + TotalCost;
-      // preferrable way using $
       return $"Name= {Name} Code= {Code} Price= {Price} Quantity= {Quantity} TotalCost= {TotalCost}";
-
     }
 
     public void Print()
