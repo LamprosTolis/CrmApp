@@ -69,7 +69,7 @@ namespace CrmApp
     /// <returns></returns>
     public int Menu()
     {
-      Console.WriteLine("1. Add a product\n 2. Display basket\n 3. Show Categories\n 4. TotalCost\n 5. Diplay Customer info\n 0. Exit");
+      Console.WriteLine("1. Add a product\n 2. Display basket\n 3. Show Categories\n 4. TotalCost\n 5. Diplay Customer info\n 6. Load Basket 0. Exit");
       Console.WriteLine("Enter your choice");
       int choice = 0;
       try
@@ -79,7 +79,7 @@ namespace CrmApp
       }
       catch (Exception e)
       {
-        Console.WriteLine("Invaild choice!");
+        Console.WriteLine("Invaild choice!\n" + e.Message);
 
         return choice;
       }
@@ -91,6 +91,7 @@ namespace CrmApp
       Customer customer = new Customer();
       Basket basket = new Basket();
       int choice = Menu();
+
 
       do
       {
@@ -110,10 +111,14 @@ namespace CrmApp
           case 4:
             Console.WriteLine("TotalCost= " + basket.TotalCost());
             break;
-          ////case 5:
-          ////  Console.WriteLine($"Customer name:{ customer.Name}\n Customer Id: {customer.Location} Customer Location: {customer.Location}");
-          //  break;
+          case 5:
+            basket.Save("basket.txt");
+            break;
+          case 6:
+            basket.Load("basket.txt");
+            break;
           case 0:
+            basket.Save("basket.txt");
             Console.WriteLine("You choose to exit");
             break;
         }

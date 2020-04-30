@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Text;
 
 namespace CrmApp
@@ -8,7 +9,7 @@ namespace CrmApp
   {
     private List<Product> Products { get; set; }
 
-    public Customer Customer { get; set;}
+    public Customer Customer { get; set; }
 
 
     public Basket()
@@ -27,7 +28,7 @@ namespace CrmApp
     public decimal TotalCost()
     {
       decimal totalCost = 0;
-      foreach(Product p in Products)
+      foreach (Product p in Products)
       {
         totalCost += p.TotalCost;
       }
@@ -61,8 +62,60 @@ namespace CrmApp
       Console.WriteLine($"howManyHi= {howManyHi}");
     }
 
+    public string Save(string filename)
+    {
+      try
+      {
+        StreamWriter sw = new StreamWriter(filename, true);
+
+        foreach (Product product in Products)
+        {
+          sw.WriteLine(product.Code + "," +
+                       product.Name + "," +
+                       product.Price + "," +
+                       product.Quantity);
+        }
+        sw.Close();
+      }
+      catch (Exception e)
+      {
+        return "Error" + e.Message;
+      }
+      return "Data Saved!";
+    }
 
 
+    public string Load(string filename)
+    {
+      try
+      {
+        Products.Clear();
+        StreamReader sr = new StreamReader(filename);
+        string line;
 
+        line = sr.ReadLine();
+
+        while (line != null)
+        {
+
+          string[] words = line.Split(",");
+          Product product = new Product
+          {
+            Code = words[0],
+            Name = words[1],
+            Price = decimal.Parse(words[2]),
+            Quantity = int.Parse(words[3])
+          };
+          Products.Add(product);
+          line = sr.ReadLine();
+        }
+       }
+      catch (Exception e)
+      {
+        return "Error!";
+      }
+        return "success!";
   }
+ }
 }
+
