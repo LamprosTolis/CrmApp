@@ -4,12 +4,14 @@ using System.Text;
 
 namespace CrmApp
 {
-  class Customer
+  public class Customer
   {
 
     public string Name { get; set; }
-    public int Id { get; set; }
+    public int CustomerId { get; set; }
     public string Location { get; set; }
+    public string Email { get; set; }
+
 
 
 

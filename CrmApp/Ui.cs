@@ -4,7 +4,7 @@ using System.Text;
 
 namespace CrmApp
 {
-  class Ui
+  public class Ui
   {
     private Basket basket;
 
@@ -24,8 +24,8 @@ namespace CrmApp
       {
         Product product = new Product();
 
-        Console.WriteLine("Enter the product code: ");
-        product.Code = Console.ReadLine();
+        //Console.WriteLine("Enter the product code: ");
+        //product.Code = Console.ReadLine();
 
         Console.WriteLine("Enter the product name: ");
         product.Name = Console.ReadLine();
@@ -53,7 +53,7 @@ namespace CrmApp
       customer.Name = Console.ReadLine();
 
       Console.WriteLine("Enter your Id Number: \n");
-      customer.Id = int.Parse(Console.ReadLine());
+      //customer.Id = int.Parse(Console.ReadLine());
 
       Console.WriteLine("Enter your Location: \n");
       customer.Location = Console.ReadLine();

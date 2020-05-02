@@ -4,26 +4,24 @@ using System.Text;
 
 namespace CrmApp
 {
-  class Product
+  public class Product
   {
 
-    private  readonly int category;
+    private readonly int category;
 
-    private string code;
+    public string ProductId { get; set; }
 
     /// <summary>
     /// Properties
     /// </summary>
-    public string Code
-    {
-      get { return "GR" + code; }
-      set { code = value; }
-    }
+
     public string Name { get; set; }
     public decimal Price { get; set; }
     public int Quantity { get; set; }
 
-    public decimal TotalCost { get { return Price * Quantity; } }
+    public string Descreption { get; set; }
+
+      public decimal TotalCost { get { return Price * Quantity; } }
 
 
     public Product(int _category)
@@ -39,7 +37,7 @@ namespace CrmApp
 
     public string PrintToLine()
     {
-      return $"Name= {Name} Code= {Code} Price= {Price} Quantity= {Quantity} TotalCost= {TotalCost}";
+      return $"Name= {Name} Price= {Price}";
     }
 
     public void Print()
@@ -47,8 +45,6 @@ namespace CrmApp
       Console.WriteLine(PrintToLine());
       Console.WriteLine();
     }
-
-
 
     public string GetRange()
     {
