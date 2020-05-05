@@ -1,4 +1,6 @@
-﻿using System;
+﻿using CrmApp.Options;
+using CrmApp.Services;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -16,8 +18,22 @@ namespace CrmApp
         //var customer = ui.CreateCustomer();
         //var basket = ui.CreateBasket();
 
-        var dbContext = new CrmAppDbContext();
-        dbContext.Database.EnsureCreated();
+        CustomerOption custOpt = new CustomerOption
+        {
+          FirstName = "Lampros",
+          LastName = "Tolis - Papagiannis",
+          Address = "Lamia",
+          Email = "ltolispapagiannis@gmail.com",
+
+        };
+
+        using CrmAppDbContext db = new CrmAppDbContext();
+        CustomerManagement custMangr = new CustomerManagement(db);
+
+        // testing the creation of a customer
+        Customer customer = custMangr.CreateCustomer(custOpt);
+        Console.WriteLine(
+            $"Id= {customer.CustomerId} Name= {customer.FirstName} Address= {customer.Address}");
 
         //Insert
         //var customer = new Customer()
@@ -27,7 +43,7 @@ namespace CrmApp
         //};
 
 
-        
+
         //dbContext.Add(customer);
         //dbContext.SaveChanges();
 

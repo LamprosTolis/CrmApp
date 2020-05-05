@@ -1,12 +1,21 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using CrmApp.Models;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace CrmApp
 {
-  class CrmAppDbContext : DbContext
+  public class CrmAppDbContext : DbContext
   {
+
+    public DbSet<Product> Products { get; set; }
+    public DbSet<Customer> Customers { get; set; }
+
+    public DbSet<Basket> Baskets { get; set; }
+
+    public DbSet<BasketProduct> BasketProducts { get; set; }
+
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
       base.OnConfiguring(optionsBuilder);

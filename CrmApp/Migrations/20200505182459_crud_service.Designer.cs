@@ -4,14 +4,16 @@ using CrmApp;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace CrmApp.Migrations
 {
     [DbContext(typeof(CrmAppDbContext))]
-    partial class CrmAppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20200505182459_crud_service")]
+    partial class crud_service
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
