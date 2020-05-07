@@ -51,13 +51,20 @@ namespace CrmApp.Services
     /// <summary>
     /// Method that finds a customer searching by Id
     /// </summary>
-    /// <param name="id"></param>
+    /// <param name="CustomerId"></param>
     /// <returns></returns>
-    public Customer FindCustomerById(int id)
+    public Customer FindCustomerById(int CustomerId)
     {
+      return db.Customers.Find(CustomerId);
+    }
 
-      Customer customer = db.Customers.Find(id);
-      return customer;
+
+    public List<Customer> FindCustomerByName(CustomerOption custOption)
+    {
+      return db.Customers
+          .Where(cust => cust.LastName == custOption.LastName)
+          .Where(cust => cust.FirstName == custOption.FirstName)
+          .ToList();
     }
 
 

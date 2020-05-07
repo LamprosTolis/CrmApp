@@ -16,6 +16,11 @@ namespace CrmApp.Services
 
     //CRUD
 
+      /// <summary>
+      /// Adding a new product to the db
+      /// </summary>
+      /// <param name="prodOption"></param>
+      /// <returns></returns>
     public Product CreateProduct(ProductOption prodOption)
     {
       Product product = new Product
@@ -31,7 +36,11 @@ namespace CrmApp.Services
       return product;
     }
 
-
+      /// <summary>
+      /// Finds a product in db by the id of the product
+      /// </summary>
+      /// <param name="id"></param>
+      /// <returns></returns>
       public Product FindProductById(int id)
       {
 
@@ -39,6 +48,12 @@ namespace CrmApp.Services
         return product;
       }
 
+    /// <summary>
+    /// Updates an already existing product in db
+    /// </summary>
+    /// <param name="prodOption"></param>
+    /// <param name="productId"></param>
+    /// <returns></returns>
     public Product Update(ProductOption prodOption, int productId)
     {
 
