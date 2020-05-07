@@ -5,10 +5,10 @@ using System.Text;
 
 namespace CrmApp.Services
 {
-  public class ProductManagment
+  public class ProductManagement
   {
     private CrmAppDbContext db;
-    public ProductManagment(CrmAppDbContext _db)
+    public ProductManagement(CrmAppDbContext _db)
     {
       db = _db;
     }
