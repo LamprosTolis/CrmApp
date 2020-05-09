@@ -47,6 +47,8 @@ namespace CrmApp.Services
         Basket = db.Baskets.Find(bskProd.BasketId),
         Product = db.Products.Find(bskProd.ProductId)
       };
+      db.BasketProducts.Add(basketProduct);
+      db.SaveChanges();
       return basketProduct;
     }
 

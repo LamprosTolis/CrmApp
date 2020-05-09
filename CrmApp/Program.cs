@@ -1,6 +1,7 @@
 ﻿using CrmApp.Models;
 using CrmApp.Options;
 using CrmApp.Services;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,56 +17,56 @@ namespace CrmApp
       public static void Main()
       {
 
-        CustomerOption custOpt = new CustomerOption
-        {
-          FirstName = "Tester222",
-          LastName = "Test",
-          Address = "TestCity",
-          Email = "test@gmail.com",
-        };
+        //CustomerOption custOpt = new CustomerOption
+        //{
+        //  FirstName = "Tester222",
+        //  LastName = "Test",
+        //  Address = "TestCity",
+        //  Email = "test@gmail.com",
+        //};
 
         using CrmAppDbContext db = new CrmAppDbContext();
         CustomerManagement custMangr = new CustomerManagement(db);
-        
-        //testing the creation of a customer
-        Customer customer = custMangr.CreateCustomer(custOpt);
-        Console.WriteLine(
-        $"Id= {customer.CustomerId} Name= {customer.FirstName} Address= {customer.Address}");
+
+        ////testing the creation of a customer
+        //Customer customer = custMangr.CreateCustomer(custOpt);
+        //Console.WriteLine(
+        //$"Id= {customer.CustomerId} Name= {customer.FirstName} Address= {customer.Address}");
 
 
 
-        //testing reading a customer
-        customer = custMangr.FindCustomerById(2);
-        if (customer != null)
-          Console.WriteLine(
-              $"Id= {customer.CustomerId} Name= {customer.FirstName} Address= {customer.Address}");
+        ////testing reading a customer
+        //customer = custMangr.FindCustomerById(2);
+        //if (customer != null)
+        //  Console.WriteLine(
+        //      $"Id= {customer.CustomerId} Name= {customer.FirstName} Address= {customer.Address}");
 
 
-        //testing updating
-        CustomerOption custChangingAddress = new CustomerOption
-        {
-          Address = "Lamia"
-        };
-        customer = custMangr.Update(custChangingAddress, 1);
-        Console.WriteLine(
-            $"Id= {customer.CustomerId} Name= {customer.FirstName} Address= {customer.Address}");
+        ////testing updating
+        //CustomerOption custChangingAddress = new CustomerOption
+        //{
+        //  Address = "Lamia"
+        //};
+        //customer = custMangr.Update(custChangingAddress, 1);
+        //Console.WriteLine(
+        //    $"Id= {customer.CustomerId} Name= {customer.FirstName} Address= {customer.Address}");
 
 
-        //testing deletion
+        ////testing deletion
 
-        bool result = custMangr.DeleteCustomerById(2);
-        Console.WriteLine($"Result = {result}");
-        customer = custMangr.FindCustomerById(2);
-        if (customer != null)
-        {
-          Console.WriteLine(
-          $"Id= {customer.CustomerId} Name= {customer.FirstName} Address= {customer.Address}");
+        //bool result = custMangr.DeleteCustomerById(2);
+        //Console.WriteLine($"Result = {result}");
+        //customer = custMangr.FindCustomerById(2);
+        //if (customer != null)
+        //{
+        //  Console.WriteLine(
+        //  $"Id= {customer.CustomerId} Name= {customer.FirstName} Address= {customer.Address}");
 
-        }
-        else
-        {
-          Console.WriteLine("not found");
-        }
+        //}
+        //else
+        //{
+        //  Console.WriteLine("not found");
+        //}
 
 
 
@@ -84,22 +85,29 @@ namespace CrmApp
 
         BasketOption baskOption = new BasketOption
         {
-          CustomerId = 3
+          CustomerId = 5
         };
 
         Basket basket = baskMangr.CreateBasket(baskOption);
         BasketProductOption bskProdOpt = new BasketProductOption
         {
-          BasketId = 1,
+          BasketId =basket.Id ,
           ProductId = 1
         };
 
-        //gia kapio  logo edw xtipaei
+        //System.NullReferenceException
 
-        //BasketProduct baskProd = baskMangr.AddProduct(bskProdOpt);
+        BasketProduct baskProd = baskMangr.AddProduct(bskProdOpt);
 
-        //basket.BasketProducts.ForEach(p =>
-        //Console.WriteLine(p.Product.Name));
+        basket.BasketProducts.ForEach(
+                        baskProduct =>
+                           Console.WriteLine(
+                               db.BasketProducts
+                               .Include(b => b.Product)
+                               .Where(b => b.Id == baskProduct.Id)
+                               .First()
+                               .Product.Name)
+                    );
 
         Console.ReadLine();
       }

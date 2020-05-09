@@ -69,6 +69,12 @@ namespace CrmApp.Services
     }
 
 
+    public List<Customer> GetAllCustomers()
+    {
+      return db.Customers.ToList();
+    }
+
+
 
     /// <summary>
     /// Method that updates a customers info
@@ -113,6 +119,19 @@ namespace CrmApp.Services
       return false;
 
     }
+
+    public bool SoftDeleteCustomerById(int id)
+    {
+      Customer customer = db.Customers.Find(id);
+      if (customer != null)
+      {
+        customer.Active = false;
+        db.SaveChanges();
+        return true;
+      }
+      return false;
+    }
+
 
 
   }
