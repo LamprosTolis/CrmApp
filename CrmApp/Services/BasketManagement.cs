@@ -7,7 +7,7 @@ using System.Text;
 
 namespace CrmApp.Services
 {
-  public class BasketManagement
+  public class BasketManagement : IBasketManagement
   {
     private CrmAppDbContext db;
 

@@ -21,7 +21,7 @@ namespace CrmApp
     //public Product CreateProduct()
     //{
     //  try
-    //  {
+    //{
     //    Product product = new Product();
 
     //    //Console.WriteLine("Enter the product code: ");

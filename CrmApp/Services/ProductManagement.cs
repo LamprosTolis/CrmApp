@@ -5,7 +5,7 @@ using System.Text;
 
 namespace CrmApp.Services
 {
-  public class ProductManagement
+  public class ProductManagement : IProductManagement
   {
     private CrmAppDbContext db;
     public ProductManagement(CrmAppDbContext _db)
@@ -16,11 +16,11 @@ namespace CrmApp.Services
 
     //CRUD
 
-      /// <summary>
-      /// Adding a new product to the db
-      /// </summary>
-      /// <param name="prodOption"></param>
-      /// <returns></returns>
+    /// <summary>
+    /// Adding a new product to the db
+    /// </summary>
+    /// <param name="prodOption"></param>
+    /// <returns></returns>
     public Product CreateProduct(ProductOption prodOption)
     {
       Product product = new Product
@@ -36,17 +36,17 @@ namespace CrmApp.Services
       return product;
     }
 
-      /// <summary>
-      /// Finds a product in db by the id of the product
-      /// </summary>
-      /// <param name="id"></param>
-      /// <returns></returns>
-      public Product FindProductById(int id)
-      {
+    /// <summary>
+    /// Finds a product in db by the id of the product
+    /// </summary>
+    /// <param name="id"></param>
+    /// <returns></returns>
+    public Product FindProductById(int id)
+    {
 
-        Product product = db.Products.Find(id);
-        return product;
-      }
+      Product product = db.Products.Find(id);
+      return product;
+    }
 
     /// <summary>
     /// Updates an already existing product in db
